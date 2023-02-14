@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_HW_10</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="content"></div>
+    <script src="data.js"></script>
+    <script>
+        const contentEl = document.querySelector('.content');
+        const dataContent = JSON.parse(dataInfo);
+        console.log(dataContent);
+        dataContent.forEach((element) => {
+            const davilEl = document.createElement('div');
+            davilEl.classList.add('davil');
+
+            const insult = document.createElement('h3');
+            insult.classList.add('insult');
+            insult.textContent = element.insult;
+
+            const createdby = document.createElement('h2');
+            createdby.classList.add('createdby');
+            createdby.textContent = element.createdby;
+
+            const image = document.createElement("img");
+            image.classList.add("image");
+            image.src = element.image;
+
+            const number = document.createElement('p');
+            number.classList.add('number');
+            number.textContent = element.number;
+
+            const comment = document.createElement("div");
+            comment.classList.add("comment");
+            comment.textContent = element.comment;
+
+            contentEl.appendChild(davilEl);
+            davilEl.appendChild(insult);
+            davilEl.appendChild(createdby);
+            davilEl.appendChild(image);
+            davilEl.appendChild(number);
+            davilEl.appendChild(comment);
+        });
+    </script>
+</body>
+
+</html>

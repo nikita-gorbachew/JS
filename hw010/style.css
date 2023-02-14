@@ -1,0 +1,39 @@
+
+  .image {
+    height: 150px;
+    width: 100%;
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  
+  .davil {
+    border: 1px solid;
+    padding: 16px;
+    width: 250px;
+  }
+  
+  .insult {
+    text-align: center;
+    text-align: justify;
+    color: rgb(59, 207, 33);
+  }
+
+  .createdby {
+    text-align: center;
+    text-align: justify;
+    color: rgb(209, 29, 32);
+  }
+
+  .number {
+    text-align: right;
+    margin-top: 0;
+  }
+
+  .comment {
+    color: rgb(113, 103, 103);
+  }
