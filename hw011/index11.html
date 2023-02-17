@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_HW_11</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style11.css">
+</head>
+
+<body>
+    <section class="features">
+        <div class="container">
+            <h2 class="features-heading">Featured Items</h2>
+            <p class="features-dsc">Shop for items based on what we featured in this week</p>
+            <div class="product-cont"></div>
+            <div class="button">
+                <button class="all__product">Browse All Product</button>
+            </div>
+        </div>
+    </section>
+    <script src="data.js"></script>
+    <script>
+        const dataProducts = JSON.parse(data);
+
+        dataProducts.forEach(element => {
+            const productsBoxEl = document.querySelector('.product-cont');
+            console.log(productsBoxEl);
+            const productEl = document.createElement('div');
+            productEl.classList.add('product');
+            productsBoxEl.appendChild(productEl);
+
+            const productImgEl = document.createElement('div');
+            productImgEl.classList.add('product-img');
+            productEl.appendChild(productImgEl);
+
+            const productDscEl = document.createElement('div');
+            productDscEl.classList.add('product-dsc');
+            productEl.appendChild(productDscEl);
+
+            const productNameEl = document.createElement('h3');
+            productNameEl.classList.add('product-name');
+            productNameEl.textContent = element.name;
+            productDscEl.appendChild(productNameEl);
+
+            const productAboutEl = document.createElement('p');
+            productAboutEl.classList.add('product-about');
+            productAboutEl.textContent = element.description;
+            productDscEl.appendChild(productAboutEl);
+
+            const priceEl = document.createElement('span');
+            priceEl.classList.add('price');
+            priceEl.textContent = element.price;
+            productDscEl.appendChild(priceEl);
+
+            const imageEl = document.createElement('img');
+            imageEl.classList.add('image');
+            imageEl.setAttribute('alt', 'product image');
+            imageEl.src = element.image;
+            productImgEl.appendChild(imageEl);
+        });
+    </script>
+</body>
+
+</html>
