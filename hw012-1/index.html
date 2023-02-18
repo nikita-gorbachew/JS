@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="videoplayer">
+        <div class="video">
+            <video class="vid" height="100%" width="100%">
+                <source src="images/istockphoto-1295217100-640_adpp_is.mp4" type="video/mp4">
+            </video>
+            <div class="time-range">
+                <span class="video-time">00:00</span>
+            </div>
+            <div class="controls">
+                <div class="play-pause">
+                    <img class="play" src="images/play.png" alt="play" class="play">
+                    <img class="pause" src="images/pause.png" alt="pause" class="pause">
+                </div>
+                <div class="input-d">
+                    <input type="range" value="0" class="duration">
+                </div>
+                <div class="input-v">
+                    <input type="range" step="0.1" min="0" max="1" value="0" class="volume">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const videoEl = document.querySelector('.vid');
+        const playVideoEl = document.querySelector('.play');
+        const pauseVideoEl = document.querySelector('.pause');
+        const videoTimeEl = document.querySelector('.video-time');
+        const durationEl = document.querySelector('.duration');
+        const volumeEl = document.querySelector('.volume');
+
+
+        function playVideo() {
+            if (videoEl.paused) {
+                videoEl.play();
+            } else {
+                videoEl.pause();
+            }
+        };
+
+        function pauseVideo() {
+            if (!videoEl.paused) {
+                videoEl.pause();
+            } else {
+                videoEl.play();
+            }
+        };
+
+        function setTime() {
+            const minutes = Math.floor(videoEl.currentTime / 60);
+            const seconds = Math.floor(videoEl.currentTime - minutes * 60);
+
+            const minuteValue = minutes.toString().padStart(2, '0');
+            const secondValue = seconds.toString().padStart(2, '0');
+
+            const mediaTime = `${minuteValue}:${secondValue}`;
+            videoTimeEl.textContent = mediaTime;
+            durationEl.value = videoEl.currentTime;
+        };
+
+        function setCurrentTime() {
+            videoEl.currentTime = durationEl.value;
+        };
+
+        function setVolume() {
+            videoEl.volume = volumeEl.value;
+        };
+
+        playVideoEl.addEventListener('click', playVideo);
+        pauseVideoEl.addEventListener('click', pauseVideo);
+        videoEl.addEventListener('timeupdate', setTime);
+        durationEl.addEventListener('input', setCurrentTime);
+        volumeEl.addEventListener('input', setVolume);
+    </script>
+</body>
+
+</html>
